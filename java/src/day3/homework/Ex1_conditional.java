@@ -1,5 +1,7 @@
 package day3.homework;
 
+import java.util.Scanner;
+
 public class Ex1_conditional {
 
 	public static void main(String[] args) {
@@ -13,6 +15,17 @@ public class Ex1_conditional {
 		 *W
 		 *Are you a women? true
 		 */
+		
+		String gender;
+		
+		Scanner sc = new Scanner(System.in);
+		System.out.println("input gender : ");
+		gender = sc.nextLine();
+		
+		boolean women = (gender.equals("w"));
+		
+		gender == women ? "M" : "W";  
+				
 	}
 
 }
