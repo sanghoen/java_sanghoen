@@ -19,7 +19,7 @@ public class PrimeNumberEx {
 		 * 반복문 종료 후 : count가 2이면 소수라고 출력, 아니면 소수가 아님이라고 출력.
 		 * */
 		
-		int num, i;
+		int num, i, count = 0;
 		Scanner sc = new Scanner (System.in);
 		//정수 입력
 		System.out.println("input positive number : ");
