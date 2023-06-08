@@ -8,8 +8,8 @@ public class MethodEx {
 		 * 
 		 */
 		int num1 = 1, num2 = 2;
-		int res = sum(num1, num2); //매개변수의 갯수에 맞게 호출 
-		System.out.println(res);   //매개변수는 값을 복사하여 전달함, 직접 전달하는 것이 아님.
+		int res = sum(num1, num2); //1.매개변수의 갯수에 맞게 호출 
+		System.out.println(res);   //2.매개변수는 값을 복사하여 전달함, 직접 전달하는 것이 아님.
 	}						
 	/**
 	 * 기능 	 : 두 정수가 주어지면, 두 정수의 합을 알려주는 매서드
