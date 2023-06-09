@@ -49,7 +49,6 @@ public class GCDEx {
 				gcd = i;
 			}
 			++i; //주의
-			
 		}
 		System.out.println(num1 + " and " + num2 + " gcd : " + gcd);
 		sc.close();
