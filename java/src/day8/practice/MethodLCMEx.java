@@ -52,10 +52,15 @@ public class MethodLCMEx {
 	}
 	
 	public static boolean isMultiple(int num1, int num2) {
-		
+		return num1 % num2 ==0;
 	}
 	
 	public static int gcd(int num1, int num2) {
-		
+		for (int i = num1; i>=1; i--) {
+			if(isMultiple(num1, i) && isMultiple(num2, i)) {
+				return i;
+			}
+		}
+		return 1;
 	}
 }
