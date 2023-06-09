@@ -30,7 +30,7 @@ public class MethodEx {
 		return res;
 	   //return = num1 + num2; 
 	}
-	
+	//매서드도 함수의 일종
 }
 
 
