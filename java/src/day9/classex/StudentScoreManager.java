@@ -8,42 +8,31 @@ public class StudentScoreManager {
 		Scanner sc = new Scanner(System.in);
 		sc.close();
 		//korScore는 인스턴스, 객체
-		//Score1 korScore = new Score1(1, 2, "korean Language");
+		//Score1 korScore = new Score1(1,2,"korean Language");
 		Score1 korScore = new Score1();
 		korScore.title = "korean Language";
 		korScore.grade = 1;
 		korScore.semester = 2;
-		Score1 engScore = new Score1(1, 2, "English");
+		Score1 engScore = new Score1(1,2,"English");
 		System.out.println(engScore.title);
 	}
 
 }
 //성적 클래스
 class Score1{
-	public Score1(String title, int grade, int semester, double total, double mid, double finalExam,
-			double performance) {
-		super();
-		this.title = title;
-		this.grade = grade;
-		this.semester = semester;
-		this.total = total;
-		this.mid = mid;
-		this.finalExam = finalExam;
-		this.performance = performance;
-	}
-	String title;//과목명
-	int grade;//학년
-	int semester;//학기
-	double total;//총점수
-	double mid;//중간고사
-	double finalExam;//기말고사
+	String title;//과목명			
+	int grade;//학년			
+	int semester;//학기			
+	double total;//총점수			
+	double midExam;//중가고사			
+	double finalExam;//기말			
 	double performance;//수행평가
-	//Score1 클래스의 기본생성자
+	//Score1 클래스의 기본 생성자
 	public Score1() {
 		/* title의 기본값은? null
 		 * grade의 기본값은? 0
 		 * total의 기본값은? 0.0
-		 */
+		 * */
 		title = "";
 		grade = 1;
 		semester = 1;
@@ -77,11 +66,11 @@ class Score1{
 	public void setTotal(double total) {
 		this.total = total;
 	}
-	public double getMid() {
-		return mid;
+	public double getMidExam() {
+		return midExam;
 	}
-	public void setMid(double mid) {
-		this.mid = mid;
+	public void setMidExam(double midExam) {
+		this.midExam = midExam;
 	}
 	public double getFinalExam() {
 		return finalExam;
@@ -95,19 +84,28 @@ class Score1{
 	public void setPerformance(double performance) {
 		this.performance = performance;
 	}
-	
+	public Score1(String title, int grade, int semester, double total, double midExam, double finalExam,
+			double performance) {
+		this.title = title;
+		this.grade = grade;
+		this.semester = semester;
+		this.total = total;
+		this.midExam = midExam;
+		this.finalExam = finalExam;
+		this.performance = performance;
+	}
+
 }
 //학생 클래스
 class Student1{
 	String name;//이름
-	String residentNumber;//주민번호(O)
+	String residentNumber;//주민번호(O)		
 	int grade;//학년
 	int classNum;//반
 	int number;//번호
 	int admissionYear;//입학년도
 	Score1 korScore, engScore, mathScore;//국어, 영어, 수학 성적
 }
-
 
 
 
