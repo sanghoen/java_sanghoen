@@ -26,15 +26,13 @@ public class MethodArithemticEx {
 		num2 = sc.nextInt();
 		
 		res = arithmetic(num1, operator, num2);
-		
+
 		System.out.println(num1 + " " + operator + " " + num2 + " = " + res);
 
 		res = arithmetic2(num1, operator, num2);
 
 		System.out.println(num1 + " " + operator + " " + num2 + " = " + res);
-		
-		System.out.println(num1 + " " + operator + " " + num2 + " = " + res);
-		
+
 		sc.close();
 	}
 	
@@ -45,7 +43,7 @@ public class MethodArithemticEx {
 	 */
 	
 	public static double arithmetic (int num1, char operator, int num2) {
-		double res =0.0;
+		double res = 0.0;
 		switch(operator) {
 		case '+' :
 			res = num1 + num2; 
