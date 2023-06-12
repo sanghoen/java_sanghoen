@@ -65,10 +65,10 @@ public class MethodPrintCharEx {
 	public static String printChar(char ch, int count, char lastCh) {
 		String str = "";
 		for(int i = 1; i <= count; i++) {
-			System.out.println(ch);
+			System.out.print(ch);
 			str += ch;
 		}
-		System.out.println(lastCh);
+		System.out.print(lastCh);
 		str += lastCh;
 		return str;
 	}
