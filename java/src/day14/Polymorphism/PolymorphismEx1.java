@@ -86,7 +86,7 @@ class HomeAppliances{
 	}
 }
 class RemoteControl1{
-	public void turnOn(HomeAppliances appliance) {
+	public void turnOn(HomeAppliances appliance) {//매개변수의 다형성
 		appliance.turnOn();
 		System.out.println("전원이 켜졌습니다.");
 	}
