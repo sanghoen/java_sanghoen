@@ -3,9 +3,10 @@ package day13.homework.controller;
 import java.util.Scanner;
 
 import day13.homework.vo.VocabularyNote;
+import day17.interfaceex.RunInterface;
 
-public class VocabularyNoteController {
-
+public class VocabularyNoteController implements RunInterface {
+	
 	private Scanner sc = new Scanner(System.in);
 	private VocabularyNote note = new VocabularyNote();
 
@@ -15,13 +16,13 @@ public class VocabularyNoteController {
 		do {
 			//메뉴 출력
 			printMenu();
-
+			
 			//메뉴 선택
 			menu = sc.nextInt();
-
+			
 			//메뉴에 따른 기능 실행
 			runMenu(menu);
-
+			
 		} while(menu != 5);
 		sc.close();
 	}
@@ -46,7 +47,7 @@ public class VocabularyNoteController {
 	 * 메서드명 : runMenu
 	 */
 	private void runMenu(int menu) {
-
+		
 		switch(menu) {
 		//메뉴가 1이면 단어 추가 기능을 실행
 		case 1:
@@ -85,22 +86,22 @@ public class VocabularyNoteController {
 			System.out.println("================");
 		}
 	}
-
+	
 	private void insertWord() {
 		//추가할 단어를 입력
 		System.out.print("단어 : ");
 		String title = sc.next();
-
+		
 		//단어에서 입력한 엔터를 처리
 		sc.nextLine();
-
+		
 		//추가할 뜻을 입력
 		System.out.print("뜻  : ");
 		String meaning = sc.nextLine();
-
+		
 		//단어장에 추가
 		int result = note.insert(title, meaning);
-
+		
 		switch(result) {
 		case 1:	System.out.println("단어 추가 성공!"); 	break;
 		case -1:System.out.println("의미 추가 성공!");	break;
@@ -138,7 +139,7 @@ public class VocabularyNoteController {
 		//삭제할 단어 입력
 		System.out.print("삭제 단어 : ");
 		String title = sc.next();
-
+		
 		//해당 단어 삭제
 		if(note.delete(title)) {
 			System.out.println("단어 삭제 완료!");
@@ -181,7 +182,7 @@ public class VocabularyNoteController {
 			//수정할 뜻의 번호를 입력
 			System.out.print("수정할 뜻 번호 선택 : ");
 			int num = sc.nextInt();
-
+			
 			sc.nextLine();//엔터 처리
 			//수정될 뜻을 입력
 			System.out.print("수정할 뜻 : ");
