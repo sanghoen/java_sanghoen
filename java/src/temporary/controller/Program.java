@@ -1,5 +1,5 @@
 package temporary.controller;
 
-public class Program {
+public interface Program {
 
 }
