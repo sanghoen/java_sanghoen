@@ -3,8 +3,21 @@ package temporary.controller;
 public class GameManager {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
+		@Override
+		public void printMenu() {
+			
+		}
+		@Override
+		public void run() {
+			
+		}
+		@Override
+		public void runMenu(int menu) {
+			
+		}
+		
+		
+		
 	}
-
 }
