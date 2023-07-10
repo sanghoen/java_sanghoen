@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.kr.test.person.model.vo.Fruit;
 
-public class Test2 {
+public class Test2{
 
 	public void test() {
 		ArrayList<Fruit> list = new ArrayList<Fruit>();
