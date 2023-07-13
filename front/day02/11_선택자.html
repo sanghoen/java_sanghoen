@@ -9,11 +9,12 @@
 		*{}
 		/* nav태그를 선택하는 선택자를 써보세요. */
 		nav{}
-		/* 아이디가 menu인 요소를 선택하는 선택자를 써보세요. */
+		/* 아이디가 menu인 요소를 선택하는 선택자를 써보세요. 
+			a태그 싱커를 이용할 때 href에 입력하는 내용을 참고 */
 		#menu{}
 		/* 클래스가 menu-item인 요소를 선택하는 선택자를 써보세요. */
 		.menu-item{}
-		/* input태그 중에서 type이 password인 요소들을 선택하는 선택자 */
+		/* input태그 중에서 type이 password인 요소들를 선택하는 선택자 */
 		input[type=password]{}
 		/* type이 password인 요소들을 선택하는 선택자 */
 		[type=password]{}
@@ -22,60 +23,60 @@
 		class="first"			 O
 		class="first-item" X
 		class="item first" O
-		class="fisrt item" O
+		class="first item" O
 		*/
 		[class~=first]{}
 		.first{}
-		/* class속성에 first-xxx이 들어가는 요소들을 선택 
+		/* 
+		class속성에 first-xxx이 들어가는 요소들을 선택 
 		class="first"			 X
 		class="first-item" O
 		class="item first" X
-		class="fisrt item" X
+		class="first item" X
 		*/
 		[class|=first]{}
-		/* class가 first로 시작하는 요소들을 선택 
+		/* 
+		class가 first로 시작하는 요소들을 선택
 		class="first"			 O
 		class="first-item" O
 		class="item first" X
-		class="fisrt item" O
+		class="first item" O
 		*/
 		[class^=first]{}
-		/* class가 item으로 끝나는 요소들을 선택 
+		/* 
+		class가 item으로 끝나는 요소들을 선택 
 		class="first"			 X
 		class="first-item" O
-		class="item first" X
-		class="fisrt item" O
+		class="item first" X 
+		class="first item" O
 		*/
 		[class$=item]{}
-		/* class에 first가 포함된 요소들을 선택. first가 들어가기만하면 됨 
+		/* 
+		class에 first가 포함된 요소들을 선택. first가 들어가기만하면됨 
 		class="first"			 O
 		class="first-item" O
 		class="item first" O
-		class="fisrt item" O
+		class="first item" O
 		*/
 		[class*=first]{}
-		/*
+		/* 
 		아이디가 menu인 요소의 자손 요소 중 a태그를 찾는 선택자
 		*/
 		#menu a{}
-		/*
+		/* 
 		아이디가 menu인 요소의 자식 중 클래스명이 menu-item인 요소를 찾는 선택자
 		*/
-		#menu > .menu-itme{} 
+		#menu > .menu-item{}
 		/* 
-		클래스명이 menu-item인 요소 뒤에 있는 클래스명이 menu-item인 
-			모든 요소를 찾는 선택자 
-		클래스명이 menu-item인 요소들의 형제들 중에서 첫번째
-		.menu-item요소를 제외한 나머지
-		.menu-item 요소	
-		<li class=".menu-item first">를 제외한 나머지 .menu-time요소들	
+		클래스명이 first인 요소 뒤에 있는 클래스명이 menu-item인 모든 요소를 찾는 선택자
+		<li class="menu-item first">를 제외한 나머지 .menu-item요소들
 		*/
-		.first~.menu-item{}
-		/*
+		.first~.menu-item{} /*선택된 요소가 2개, 메뉴2, 메뉴3*/
+		/* 
 		클래스명이 first인 요소 다음에 클래스명이 menu-item인 요소를 찾는 선택자
-			*/
-		.first+.menu-item{} /* 선택된 요소가 1개, 메뉴2 */
-		/*
+		 */
+		.first+.menu-item{} /*선택된 요소가 1개, 메뉴2*/
+		/* 
 		메뉴1에 마우스를 올렸을 때 선택자
 		*/
 		.first:hover{}
