@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>서브 메뉴 예제</title>
+	<style>
+		* {padding: 0; margin: 0; color: black;}
+		ul,ol{ list-style: none; }
+		a { text-decoration: none; }
+		.menu-list{
+			width: 903px; height: 300px; border: 1px solid black;
+			margin: 0 auto; margin-top: 50px;  
+		}
+		.menu-item{
+			width: 300px; height: 300px; background-color: aqua;
+			 text-align: center; float: left;
+			
+		}
+		.menu-link{
+			font-size: 60px; line-height: 250px;
+		}
+		.menu-item+.menu-item{
+			border-left: 1px solid black;
+		}
+		.submenu-list{
+			width: 300px; height: 600px; border: 1px solid black;
+			margin-top: 50px;
+		}
+		.submenu-item{
+			width: 300px; height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="menu-list">
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴1</a>
+				<ul class="submenu-list">
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-1</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-2</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-3</a>
+					</li>
+				</ul>
+			</li>
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴2</a>
+				<ul class="submenu-list">
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-1</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-2</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-3</a>
+					</li>
+				</ul>
+			</li>
+			<li class="menu-item">
+				<a href="#" class="menu-link">메뉴3</a>
+				<ul class="submenu-list">
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-1</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-2</a>
+					</li>
+					<li class="submenu-item">
+						<a href="#" class="submenu-link">서브1-3</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>

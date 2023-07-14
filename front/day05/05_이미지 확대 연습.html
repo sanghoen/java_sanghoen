@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>이미지 확대 연습</title>
+	<style>
+		.box{
+			overflow: hidden; width: 100px; height: 100px;
+			border: 3px solid black; margin: 0 auto; margin-top: 50px;
+		}
+		.inner-box:hover{
+			transform: scale(1.5);
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<img class="inner-box" src="../img/강아지.jpg" alt="강아지" width="100" height="100">
+	</div>
+</body>
+</html>

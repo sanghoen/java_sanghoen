@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		.menu-list{
+			width: 600px; height: 300px;
+		}
+		.menu-item{
+			border-top: 1px solid black;
+			border-bottom: 1px solid black;
+			width: 600px; height: 100px;
+		}
+		.menu-item+.menu-item{
+			margin-top: -2px;
+		}	
+		.menu-item+.menu-item+.menu-item{
+			margin-top: -1px;
+		}
+		.box{
+			width: 150px; height: 300px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="menu-list">
+			<li class="menu-item">
+				<div class="box">번호</div>
+				<div class="box">제목</div>
+				<div class="box">작성자</div>
+				<div class="box">조회수</div>
+			</li>
+			<li class="menu-item">
+
+			</li>
+			<li class="menu-item">
+
+			</li>
+		</ul>	
+</body>
+</html>
