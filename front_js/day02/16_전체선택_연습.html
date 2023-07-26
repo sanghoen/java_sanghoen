@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>전체선택</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<input type="checkbox" name="check1" value="che"> 
+	<button class="btn">전체선택</button> <br>
+	<input type="checkbox" name="check2" value="che"> <br>
+	<input type="checkbox" name="check3" value="che"> 
+	<script>
+		$('.btn').click(function(){
+			let checked1 = $('[name=check1]').prop('checked', true);
+			let checked2 = $('[name=check2]').prop('checked', true);
+			let checked3 = $('[name=check3]').prop('checked', true);
+		});
+	</script>
+</body>
+</html>
+
