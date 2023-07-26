@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>페이지</title>
+	<style>
+		.box{
+		width: 200px; 
+		text-align: center; line-height: 50px; height: 50px;
+		font-size: 30px; font-weight: bold;
+		
+		}
+		#btn1 {
+			float: left; width: 30px; height: 30px; text-align: center; cursor: pointer;
+		}
+		#btn2 {
+			float: left; width: 30px; height: 30px; text-align: center; cursor: pointer;
+		}
+		#box {
+			width: 50px; height: 30px; border: solid 1px black;
+			float: left; font-size: 20px; line-height: 30px;
+		}
+	</style>
+</head>
+<body>
+	
+	<div class="box">
+		<button id="btn1"><</button>
+		<div id="box"></div>
+		<button id="btn2">></button>
+	</div>
+	<script>
+		box.innerText = '1/6';
+		let i = 1;
+		let btn1 = document.getElementById('btn1');
+		btn1.onclick = function(){
+			i--
+			if(i==0){
+				i=6
+			}
+			box.innerText = getNum(i);
+			}
+			function getNum(i){
+			return ''+fillNum(i);
+			}
+			function fillNum(num){
+			return num < 7 ? '' +num : num;
+			}
+
+		let btn2 = document.getElementById('btn2');
+		btn2.onclick = function(){
+			i++
+			if(i==7){
+				i=1
+			}
+			box.innerText = getNum(i);
+			}
+			function getNum(i){
+			return ''+fillNum(i);
+			}
+			function fillNum(num){
+			return num < 6 ? '' +num : num;
+			}
+	</script>
+</body>
+</html>
