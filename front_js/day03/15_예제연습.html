@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.box{
+			width: 500px; height: 500px; margin: 20px 20px;
+			border: 2px solid black;
+		}
+		.box1{ background: red;}
+		.box2{ background: blue;}
+		.box3{ background: yellow;}
+		.btn{
+			border-radius: 50px;
+		}
+		.right-btn1{
+			margin-left: 260px;
+		}
+</style>
+</head>
+<body>
+	<button class="btn btn1" data-target=".box1">메뉴1</button>
+	<button class="btn btn2" data-target=".box2">메뉴2</button>
+	<button class="btn btn3" data-target=".box3">메뉴3</button>
+
+	<button class="btn-prev">이전</button>
+	<button class="btn-next">다음</button>
+
+	<div class="box box1"></div> 
+	<div class="box box2"></div> 
+	<div class="box box3"></div> 
+	<script>
+		$('.box').hide();
+
+		$('.btn').click(function(){
+			let target = $(this).attr('data-target');
+			$('.box').hide();
+			$(target).show();
+		});
+		$('.btn1').click(function(){
+			$('.btn').css('background','#f0f0f0')
+			$('.btn1').css('background','red');
+		})
+		$('.btn2').click(function(){
+			$('.btn').css('background','#f0f0f0')
+			$('.btn2').css('background','blue');
+		})
+		$('.btn3').click(function(){
+			$('.btn').css('background','#f0f0f0')
+			$('.btn3').css('background','yellow');
+		})
+		
+		let currentMenu = 1;
+		const MAX_MENU = 3;
+		let btnPrev = document.querySelector('.btn-prev');
+		let btnNext = document.querySelector('.btn-next');
+		let pageCurrent = document.querySelector('.page-current');
+		
+		btnPrev.onclick = ()=>{
+			currentMenu = --currentMenu == 0 ? MAX_MENU : currentMenu;
+			pageCurrent.innerText = currentMenu;
+		}
+
+	</script>
+</body>
+</html>
