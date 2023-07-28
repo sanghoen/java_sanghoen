@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>정규표현식</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+	<span>아이디</span>
+	<input type="text" id="id"> <p>
+	<div class="box1"></div>
+	<span>비밀번호</span>
+	<input type="password1" id="password1">
+	<div class="box2"></div> <p>
+	<span>비밀번호 확인</span>
+	<input type="password2" id="password2">
+	<div class="box3"></div> <p>
+	<span>이메일</span>
+	<input type="email" id="email">
+	<div class="box4"></div>
+	<script>
+		let regex1 = /^[A-Za-z0-9]{8,13}$/;
+		$('#id').change(function(){
+			let text = $(this).val();
+			if(regex1.test(text)){
+				$('.box1').text('정규표현식에 맞습니다.');
+			}else{
+				$('.box1').text('영문과 숫자만 8~13자 입력하세요.');
+			}
+		});
+		let regex2 = /^[A-Za-z0-9]{8,20}$/;
+		$('#password1').change(function(){
+			let text = $(this).val();
+			if(regex2.test(text)){
+				$('.box2').text('정규표현식에 맞습니다.');
+			}else{
+				$('.box2').text('영문과 숫자만 8~20자 입력하세요.');
+			}
+		});
+	</script>
+</body>
+</html>
