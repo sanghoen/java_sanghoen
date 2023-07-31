@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>연습</title>
+	<script src="../js/jquery.min.js"></script>
+</head>
+<body>
+<container>
+	<input type="text" class="text">
+	<button class="btn">+</button>
+</container>	
+	<script>
+		$('.btn').click(function(){
+			let element = 
+			` 
+			<br>
+			<input type="text" class="text">
+			<button class="btn2">-</button>
+			`
+			$('container').append(element);
+		})
+		$('.btn2').click(function(){
+			$('.btn2').prev.remove();
+			$('.btn2').remove();
+		})
+	</script>
+</body>
+</html>
