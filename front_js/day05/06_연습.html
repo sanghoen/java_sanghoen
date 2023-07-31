@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+		.list{
+			height: 100px; width: 700px; display: block;
+		}
+	</style>
+</head>
+<body>
+		<box class="list list1">항목1</box> 
+		<box class="list list2">항목2</box>
+		<box class="list list3">항목3</box> 
+		<box class="list list4">항목4</box> 
+		<box class="list list5">항목5</box> 
+		<box class="list list6">항목6</box>
+		<box class="list list7">항목7</box>
+	<script>
+		$('.list').click(function(){
+			$('.list').css('border','1px solid white')
+	
+			let index = $(this).index();
+			if(index < 0){
+				
+			}
+			$('.list').eq(index).css('border','1px solid Orange');
+			$('.list').eq(index-1).css('border','1px solid yellow');
+			$('.list').eq(index+1).css('border','1px solid yellow');
+		});
+
+	</script>
+</body>
+</html>
