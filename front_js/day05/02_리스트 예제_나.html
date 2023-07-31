@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>리스트 예제</title>
+	<script src="../js/jquery.min.js"></script>
+	<style>
+	
+	</style>
+</head>
+<body>
+	<ul>
+		<li class="item item1">항목1</li>
+		<li class="item item2">항목2</li>
+		<li class="item item3">항목3</li>
+	</ul>
+	<button class="btn btn1">항목1 클릭</button>
+	<button class="btn btn2">항목2 클릭</button>
+	<button class="btn btn3">항목3 클릭</button>
+	<script>
+		//한 줄이면 중괄호 생략가능.{$('li').first().css('background-color','yellow')}
+		$('.btn1').click(function(){
+			$('.item').css('background-color','transparent')
+			$('.item1').css('background-color','yellow')	
+		});
+
+		$('.btn2').click(function(){
+			$('.item').css('background-color','transparent')
+			$('.item2').css('background-color','yellow')
+		});
+		$('.btn3').click(function(){
+			$('.item').css('background-color','transparent')
+			$('.item3').css('background-color','yellow')
+		});
+	</script>
+</body>
+</html>
