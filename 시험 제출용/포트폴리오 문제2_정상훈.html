@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<script src="../front_js/js/jquery.min.js"></script>
+	<style>
+	.container{
+		height: 300px; width: 340px; border: 1px solid gray; position: relative;
+		margin-left: auto; margin-right: auto; background-color: whitesmoke;
+		text-align: center;
+	}
+		[class^=error]{
+			color: red; margin-bottom: 5px;
+		}
+	.form-group{
+		margin: 10px; 
+	}
+	button{
+		width: 90%; padding: 5px; margin: 20px 0px 5px 5px; background-color: lightgreen;
+		border: none; 
+	}
+	.span1{
+		 float: left;
+	}
+	.small{
+		text-align: right; font-size: 3px; float: right;
+		font-style: gray; display: none;
+	}
+	input{
+		float: right;
+		background-color: whitesmoke;
+	}
+
+	.form-control{
+		border: none; border-bottom: 1px dashed; 
+	}
+	.form-control::placeholder{
+		text-align: center;
+	}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<form action="">
+			<br><br>
+			<div class="form-group">
+				<span class="span1">아이디</span>
+				<input type="text" class="form-control" name="id">
+			</div>
+			<br>
+			<label class="error-id"></label>
+			<div class="form-group">
+				<span class="span1">패스워드</span>
+				<input type="password" class="form-control" name="pw">
+			</div>
+			<label class="error-pw"></label>
+			<span class="small">영문자 대/소문자 특수문자, 숫자 포함 8~32자</span><br>
+			<br>
+			<div class="form-group">
+				<span class="span1">패스워드 확인</span>
+				<input type="password" class="form-control" name="pw2">
+			</div>
+			<label class="error-pw2"></label>
+			<br>
+			<div class="form-group">
+				<span class="span1">이메일</span>
+				<input type="text" class="form-control" name="email" placeholder="@">
+			</div>
+			<br>
+			<label class="error-email"></label>
+			<div class="form-group">
+				<span class="span1">주소</span>
+				<input type="text" class="form-control" name="address">
+				<input type="text" class="form-control" name="address">
+			</div>
+			<label class="error-address"></label>
+			<button class="btn btn-outline-success col-12">가입</button>
+		</form>
+	</div>
+ <script>
+	$('[name=id]').change(checkId);
+		$('[name=pw]').change(checkPw);
+		$('[name=pw2]').change(checkPw2);
+		$('[name=email]').change(checkEmail);
+
+		$('form').submit(function(){
+			let ok = true;
+
+			if(!checkId()){
+				ok = false;
+			}
+			if(!checkPw()){
+				ok = false;
+			}
+			if(!checkPw2()){
+				ok = false;
+			}
+			if(!checkEmail()){
+				ok = false;
+			}
+
+			return ok;
+		});
+
+		function checkId(){
+			let id = $('[name=id]').val();
+			let regex = /^\w{8,13}$/;
+			if(regex.test(id)){
+				$('.error-id').text('사용 가능한 아이디입니다.');
+				return ture;
+			}else{
+				$('.error-id').text('아이디는 필수입력 항목입니다.');
+				return false;
+			}
+		}		
+		function checkPw(){
+			let pw = $('[name=[pw]]').val();
+			let regex = /^[a-zA-Z0-9!@#$]{8,32}$/;
+			if(regex.test(pw)){
+				$('.error-pw').text('');
+				return ture;
+			}else{
+				$('.error-pw').text('패스워드는 필수입력 항목입니다.');
+				return false;
+			}
+		}
+		function checkPw2(){
+			let pw = $('[name=pw]').val();
+			let pw2 = $('[name=pw2]').val();
+			if(pw == pw2){
+				$('.error-pw2').text('');
+				return true;
+			}else{
+				$('.error-pw2').text('비밀번호와 일치하지 않습니다.');
+				return false;
+			}
+		}	
+		function checkEmail(){
+			let email = $('[name=[email]]').val();
+			// + : 1개 이상. () : 패던
+			let regex = /^[a-zA-Z0-9_]+@[a-zA-Z0-9]+(.[a-zA-Z0-9]+)+$/;
+			if(regex.test(email)){
+				$('.error-email').text('');
+				return ture;
+			}else{
+				$('.error-email').text('이메일 형식에 맞지 않습니다.');
+				return false;
+			}
+		}
+		$('[name=pw]').click(function(){
+			$('.small').css('display','inline')
+		});
+ </script>
+</body>
+</html>
