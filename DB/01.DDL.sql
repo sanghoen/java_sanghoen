@@ -62,11 +62,11 @@ NO ACTION : 제약조건 옵션을 선택하지 않는 경우 자동으로 선�
 SET DEFAULT : 참조되고 있으면 기본키의 값이 변하면 참조하는 테이블의 값이 기본값으로 바뀜
 */
 -- 대학생(학번, 이름, 학과)
-create table if not exists student(
-	num char(10) not null,
+create table if not exists course.`student`(
+	num char(10) not null,  -- num char(10) not null primary key도 가능
     name varchar(20) not null,
     major varchar(20) not null,
-    primary key(num) 
+    primary key(num) 		-- 이거 대신
 );
 -- 과목(과목코드, 과목명, 학점, 시수)
 -- 과목코드 앞 3자리는 종류, 뒤 3자리는 숫자(다를 수 있음) ex) MSC001 
