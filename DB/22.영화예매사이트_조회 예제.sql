@@ -252,3 +252,39 @@ WHERE
 GROUP BY TH_NUM, MS_MO_NUM;
 
 
+-- 등록된 영화를 조회하는 쿼리
+
+SELECT *
+	FROM MOVIE;
+        
+-- 장르가 드라마인 영화를 조회하는 쿼리
+SELECT  
+	*
+	FROM movie
+    JOIN movie_genre
+    ON MG_MO_NUM = MO_NUM
+	WHERE MG_GE_NAME = '드라마';
+    
+-- 개봉전인 영화를 조회하는 쿼리
+SELECT
+	*
+FROM 
+	MOVIE
+WHERE
+	MO_OPENING_DATE > NOW();
+    
+-- 상영 종료된 영화를 조회하는 쿼리(현재 개봉중인 영화는 오늘을 기준으로 2주까지 스케줄이 반드시 등록이 됨)
+SELECT
+	MO_TITLE AS 상영종료영화
+FROM
+	movie
+		LEFT JOIN -- 상영 종료된 영화는 상영 정보가 없기 때문에 INNER JOIN을 하면 종료된 영화가 조회되지 않음
+	movie_schedule
+ON 
+	MS_MO_NUM = MO_NUM
+WHERE
+	MO_OPENING_DATE <= NOW()
+HAVING 
+	COUNT(MS_NUM) = 0; -- 직계 함수는 WHERE절에 넣을 수 없다.
+
+
