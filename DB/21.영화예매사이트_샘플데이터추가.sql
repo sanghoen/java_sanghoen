@@ -278,3 +278,135 @@ FROM
 	ON RV_MS_NUM = MS_NUM) * 100)
 WHERE
     MO_NUM = 2;
+    
+-- 'abc123' 회원이 콘크리트 유토피아 리뷰를 다음과 같이 작성할 때, 쿼리
+-- 콘크리트 유토피아 재미 있어요.
+insert into review (re_content, re_mo_num, re_me_id)
+	select '콘크리트 유토피아 재미 있어요', mo_num, 'abc123'
+    from
+		movie
+	where
+		mo_title = '콘크리트 유토피아';
+-- 'abc123' 회원이 작성한 콘크리트 유토피아 리뷰를 admin회원이 추천을 클릭했을 때 필요한 쿼리
+-- 단, 리뷰번호는 1번인걸 알고 있다고 가정
+-- 1. 리뷰 테이블에 데이터 추가
+insert into `like` (me_id, re_num)
+	values('admin', 1);
+-- 2. 리뷰 테이블에 추천 수를 업데이트
+update
+		review
+set 
+	re_total_like = (select count(*) from `like` where re_num = 1)
+where 
+	re_num = 1;
+    
+-- admin 회원이 1번 리뷰 추천을 취소 했을 때 필요한 쿼리
+delete from `like` where me_id='admin' and re_num = 1;
+update
+	review
+set 
+	re_total_like = (select count(*) from `like` where re_num = 1)
+where 
+	re_num = 1;
+
+-- 영화 콘크리트 유토피아 리뷰를 조회하는 쿼리alter
+select
+	*
+from 
+	review
+where
+	re_mo_num = (select
+			mo_num
+		from
+			movie
+		where
+			mo_title ='콘크리트 유토피아');
+ 
+-- 15세 관람가 영화를 조회하는 쿼리
+select
+	*
+    from
+    movie
+where
+	mo_ag_name = '15세관람가';
+
+-- 이병헌이 출연한 영화를 조회하는 쿼리
+
+select
+	mo_title as 영화, fp_name as 영화인
+from
+	movie
+		join 
+    role on mo_num = ro_mo_num
+		join 
+    film_person on fp_num = ro_fp_num
+where 
+	fp_name = '이병헌';
+
+-- 2023년에 개봉한 영화를 조회하는 쿼리
+
+select
+	*
+    from
+	movie
+where
+	mo_opening_date like '2023%';
+
+-- 2023년에 개봉한 한국 영화를 조회하는 쿼리
+
+select
+	cp_ct_name as 국가, mo_title as 영화
+    from
+	movie
+    join
+    country_production 
+    on
+    mo_num = cp_mo_num
+where
+	mo_opening_date like '2023%'
+and
+	cp_ct_name = '한국'
+    ;
+
+-- 각 영화의 리뷰 수를 조회하는 쿼리
+
+select
+	mo_title as 영화이름,
+    count(re_num) as 리뷰수
+from
+	movie
+		left join
+		review 
+		on
+	re_mo_num = mo_num
+group by
+	mo_num;
+    
+-- CGV강남에서 상영하는 모든 영화 스케줄을 조회하는 쿼리
+-- 영화 제목, 상영시간, 상영관 이름
+
+SELECT
+    mo_title as 영화,
+    ms_start_time as 상영시간,
+    sc_name as 상영관
+FROM
+	movie_schedule
+		join
+	movie
+		on
+	ms_mo_num = mo_num
+		JOIN
+	screen
+where sc_th_num = (select th_num from theater where th_name = 'cgv강남');
+    
+-- 영화 예매율 순으로 가장 예매율이 높은 영화 1개를 조회하는 쿼리
+-- 예매율이 같은 경우 개봉일이 늦은 영화를 조회
+
+select 
+	mo_title as 영화예매율1위
+	from 
+		movie
+	order by mo_reservation_rate desc, mo_opening_date asc
+	limit 1;
+
+
