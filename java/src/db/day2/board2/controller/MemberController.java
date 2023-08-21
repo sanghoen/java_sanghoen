@@ -6,7 +6,7 @@ import db.day2.board2.service.MemberService;
 import db.day2.board2.service.MemberServiceImp;
 
 public class MemberController {
-
+	
 	private Scanner sc;
 	private MemberService memberService;
 
@@ -50,7 +50,7 @@ public class MemberController {
 		}else {
 			System.out.println("[회원탈퇴 실패!]");
 		}
-
+		
 	}
 
 	private void printMenu() {
@@ -60,9 +60,9 @@ public class MemberController {
 		System.out.println("3.뒤로가기");
 		System.out.println("==================");
 		System.out.print("메뉴 선택 : ");
-
+		
 	}
-
+	
 	private void signup() {
 		System.out.print("ID : ");
 		String id = sc.next();
@@ -75,4 +75,3 @@ public class MemberController {
 		}
 	}
 }
-

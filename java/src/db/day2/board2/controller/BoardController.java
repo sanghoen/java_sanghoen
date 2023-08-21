@@ -8,10 +8,10 @@ import db.day2.board2.service.BoardServiceImp;
 import db.day2.board2.vo.BoardVO;
 
 public class BoardController {
-
+	
 	private Scanner sc;
 	private BoardService boardService;
-
+	
 	public BoardController(Scanner sc) {
 		this.sc = sc;
 		boardService = new BoardServiceImp();
@@ -30,19 +30,19 @@ public class BoardController {
 
 	private void runMenu(int menu) {
 		switch(menu) {
-		case 1: 
+		case 1:
 			insertBoard();
 			break;
-		case 2: 
+		case 2:
 			break;
-		case 3: 
+		case 3:
 			break;
-		case 4: 
+		case 4:
 			printBoardList();
 			break;
-		case 5: 
+		case 5:
 			break;
-		default: 
+		default:
 			System.out.println("[잘못된 메뉴]");
 		}
 		
@@ -50,7 +50,7 @@ public class BoardController {
 
 	private void printBoardList() {
 		ArrayList<BoardVO> list = boardService.getBoardList();
-		for(BoardVO tmp: list) {
+		for(BoardVO tmp : list) {
 			System.out.println(tmp);
 		}
 	}
@@ -60,25 +60,24 @@ public class BoardController {
 		System.out.print("제목 : ");
 		sc.nextLine();
 		String title = sc.nextLine();
-		System.out.println("ID : ");
+		System.out.print("ID  : ");
 		String id = sc.next();
 		if(boardService.insertBoard(title, id)) {
-			System.out.println("[게시글 작성 성공]");
+			System.out.println("[게시글 작성 성공!]");
 		}else {
 			System.out.println("게시글 작성 실패!");
-		};
+		}
 	}
 
 	private void printMenu() {
 		System.out.println("=====게시판 메뉴=====");
-		System.out.println("1. 게시글 등록");
-		System.out.println("2. 게시글 수정");
-		System.out.println("3. 게시글 삭제");
-		System.out.println("4. 게시글 확인");
-		System.out.println("5. 뒤로가기");
+		System.out.println("1.게시글 등록");
+		System.out.println("2.게시글 수정");
+		System.out.println("3.게시글 삭제");
+		System.out.println("4.게시글 확인");
+		System.out.println("5.뒤로가기");
 		System.out.println("==================");
 		System.out.print("메뉴 선택 : ");
-		
 	}
 
 }

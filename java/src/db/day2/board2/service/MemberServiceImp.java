@@ -2,18 +2,19 @@ package db.day2.board2.service;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-import db.day2.board2.controller.ArrayList;
 import db.day2.board2.dao.MemberDAO;
 import db.day2.board2.vo.MemberVO;
 
 public class MemberServiceImp implements MemberService{
 
+	
 	private MemberDAO memberDao;
 	private InputStream inputStream;
 	private SqlSession session;
@@ -32,7 +33,7 @@ public class MemberServiceImp implements MemberService{
 
 	@Override
 	public boolean signup(String id, String pw) {
-
+		
 		//아이디가 id인 회원 정보를 가져옴 
 		MemberVO member = memberDao.getMember(id);
 		//회원의수가 0이 아니면 등록을 안하고,
@@ -52,9 +53,9 @@ public class MemberServiceImp implements MemberService{
 
 	@Override
 	public boolean withdraw(String id, String pw) {
-
+		
 		MemberVO member = memberDao.getMember(id);
-
+		
 		if(member != null && member.getMe_pw().equals(pw)) {
 			memberDao.deleteMember(id);
 			session.commit();
