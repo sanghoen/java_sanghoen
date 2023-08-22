@@ -1,5 +1,5 @@
 /*
-update : 데이터 수정alter
+update : 데이터 수정
 
 update 테이블 set 속성1 = 값1, 속성2 = 값2, ..., 속성n = 값n where 기본키 = 값;
 
