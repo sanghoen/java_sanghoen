@@ -8,15 +8,15 @@
 </head>
 <body>
 	<h1>회원가입</h1>
-	<form action="<%=request.getContextPath()%>/signup" method="post">
+	<form action="<%=request.getContextPath()%>/singup" method="post">
 		<input type="text" name="id"> <br>
 		<input type="password" name="pw"> <br>
 		<button>회원가입</button>
-	</form>	
+	</form>
 	<script>
-		<%
+		<% 
 			Boolean result = (Boolean)request.getAttribute("signupOk");
-			if(result != null && result) {
+			if(result != null && result){
 		%>
 			alert('회원가입 성공!')
 		<%

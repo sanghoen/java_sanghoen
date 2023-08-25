@@ -14,7 +14,7 @@
 	<%
 		for(int i = 0; i<5; i++){
 	%>
-		<h4><%=i%></h4>
+		<h4><%=i%></h4>	
 	<%
 		}
 	%>
@@ -24,15 +24,5 @@
 		<input type="text" name="id">
 		<button>전송</button>
 	</form>
-	
 </body>
 </html>
-
-
-
-
-
-
-
-
-
