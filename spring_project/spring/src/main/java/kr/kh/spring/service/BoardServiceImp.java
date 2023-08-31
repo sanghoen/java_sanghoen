@@ -44,4 +44,19 @@ public class BoardServiceImp implements BoardService{
 		return boardDao.selectBoardCount(cri);
 	}
 
+	@Override
+	public BoardVO getBoard(Integer bo_num) {
+		if(bo_num == null) {
+			return null;
+		}
+		return boardDao.selectBoard(bo_num);
+	}
+
+	@Override
+	public void updateViews(Integer bo_num) {
+		if(bo_num == null) {
+			return;
+		}
+		boardDao.updateBoardViews(bo_num);
+	}
 }
