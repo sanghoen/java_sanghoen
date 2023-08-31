@@ -26,7 +26,7 @@ public class MemberController {
 	@RequestMapping(value="/member/signup", method=RequestMethod.GET)
 	public String signup() { //sighup을 찾아서 호출
 		
-		return "member/signup"; //뷰 리졸버가 리턴값이 멤버 사인업인 값을 반환
+		return "/member/signup"; //뷰 리졸버가 리턴값이 멤버 사인업인 값을 반환
 	}							//디스패쳐가 전달받음
 	
 	@RequestMapping(value="/member/signup", method=RequestMethod.POST)
@@ -41,7 +41,7 @@ public class MemberController {
 	}	
 	@GetMapping(value="/member/login")
 	public String memberLogin() {
-		return "member/login";
+		return "/member/login";
 	}
 	@PostMapping(value="/member/login")
 	public String memberLoginPost(MemberVO member, Model model) {
