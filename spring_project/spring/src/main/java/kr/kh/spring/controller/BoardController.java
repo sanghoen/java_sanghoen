@@ -22,7 +22,7 @@ import kr.kh.spring.vo.MemberVO;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-	
+
 	@Autowired
 	BoardService boardService;
 	
@@ -33,7 +33,7 @@ public class BoardController {
 		List<BoardVO> list = boardService.getBoardList(cri);
 		int totalCount = boardService.getTotalCount(cri);
 		PageMaker pm = new PageMaker(3, cri, totalCount);
-
+		
 		model.addAttribute("pm", pm);
 		model.addAttribute("list", list);
 		return "/board/list";
@@ -43,7 +43,6 @@ public class BoardController {
 	public String insert() {
 		return "/board/insert";
 	}
-	
 	@PostMapping("/insert")
 	public String insertPost(BoardVO board, HttpSession session, Model model, MultipartFile[] files) {
 		MemberVO user = (MemberVO)session.getAttribute("user");
@@ -57,19 +56,49 @@ public class BoardController {
 		return "message";
 	}
 	@GetMapping("/detail")
-	public String detail(Model model, Integer bo_num, Criteria cri) {
+	public String detail(Model model, Integer bo_num , Criteria cri) {
 		boardService.updateViews(bo_num);
 		BoardVO board = boardService.getBoard(bo_num);
+		//List<FileVO> fileList = boardService.getFileList(bo_num)
 		model.addAttribute("board", board);
 		model.addAttribute("cri", cri);
 		return "/board/detail";
 	}
+	@GetMapping("/update")
+	public String update(Model model,Integer bo_num, HttpSession session) {
+		BoardVO board = boardService.getBoard(bo_num);
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(user == null || board == null || !user.getMe_id().equals(board.getBo_me_id())) {
+			Message msg = new Message("/board/list", "잘못된 접근입니다.");
+			model.addAttribute("msg", msg);
+			return "message";
+		}
+		model.addAttribute("board", board);
+		return "/board/update";
+	}
+	@PostMapping("/update")
+	public String updatePost(Model model, BoardVO board, 
+			MultipartFile[] files, Integer[] delFiles, HttpSession session) {
+		Message msg;
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		if(boardService.updateBoard(board, files, delFiles,user)) {
+			msg = new Message("/board/detail?bo_num="+board.getBo_num(), "게시글을 수정했습니다.");
+		}else {
+			msg = new Message("/board/update?bo_num="+board.getBo_num(), "게시글을 수정하지 못했습니다."); 
+		}
+		model.addAttribute("msg", msg);
+		return "message";
+	}
+	@GetMapping("/delete")
+	public String delete(Model model, HttpSession session, Integer bo_num) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		Message msg;
+		if(boardService.deleteBoard(bo_num, user)) {
+			msg = new Message("/board/list", "게시글을 삭제했습니다.");
+		}else {
+			msg = new Message("/board/list", "잘못된 접근입니다.");
+		}
+		model.addAttribute("msg", msg);
+		return "message";
+	}
 }
-
-
-
-
-
-
-
-

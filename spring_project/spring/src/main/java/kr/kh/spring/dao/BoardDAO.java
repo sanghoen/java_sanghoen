@@ -20,6 +20,14 @@ public interface BoardDAO {
 
 	void updateBoardViews(@Param("bo_num")Integer bo_num);
 
-	void insertFile(@Param("file")FileVO fileVO);
+	void insertFile(@Param("file")FileVO fileVo);
+
+	boolean updateBoard(@Param("board")BoardVO board);
+
+	FileVO selectFile(@Param("fi_num")Integer num);
+
+	void deleteFile(@Param("fi_num")Integer num);
+
+	void deleteBoard(@Param("bo_num")Integer bo_num);
 
 }

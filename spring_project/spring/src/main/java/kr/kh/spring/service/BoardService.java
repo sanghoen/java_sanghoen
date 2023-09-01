@@ -20,6 +20,8 @@ public interface BoardService {
 
 	void updateViews(Integer bo_num);
 
-	
+	boolean updateBoard(BoardVO board, MultipartFile[] files, Integer[] delFiles, MemberVO user);
+
+	boolean deleteBoard(Integer bo_num, MemberVO user);
 
 }
