@@ -57,8 +57,39 @@ public class BoardController {
 		
 		return "/util/message";
 	}
-	
-	
+	@GetMapping("/board/update")
+	public String boardUpdate(Model model, Integer bo_num) {
+		BoardVO board = boardService.getBoard(bo_num);
+		model.addAttribute("board", board);
+		return "/board/update";
+	}
+	@PostMapping("/board/update")
+	public String boardUpdatePost(Model model, BoardVO board, HttpSession session) {
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		boolean res = boardService.update(board,user);
+		if(res) {
+			model.addAttribute("msg", "게시글을 수정했습니다.");
+			
+		}else {
+			model.addAttribute("msg", "게시글을 등록하지 못했습니다.");
+		}
+		model.addAttribute("url", "/board/detail?bo_num="+board.getBo_num());
+		return "/util/message";
+	}
+	@GetMapping("/board/delete")
+	public String boardDelete(Model model, Integer bo_num, HttpSession session) {
+		MemberVO user =  (MemberVO)session.getAttribute("user");
+		boolean res = boardService.deleteBoard(bo_num, user);
+		if(res) {
+			model.addAttribute("msg", "게시글을 삭제했습니다.");
+			
+		}else {
+			model.addAttribute("msg", "게시글을 삭제하지 못했습니다.");
+		}
+		model.addAttribute("url", "/board/list");
+		
+		return "/util/message";
+	}
 	
 }
 
