@@ -5,6 +5,7 @@
 <mapper namespace="kr.kh.study.dao.BoardDAO">
 	<select id="selectBoardList" resultType="kr.kh.study.vo.BoardVO">
 		select * from board order by bo_num desc
+		limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectBoard" resultType="kr.kh.study.vo.BoardVO">
 		select * from board where bo_num = #{bo_num}
@@ -31,29 +32,16 @@
 		insert into file(fi_name, fi_ori_name, fi_bo_num)
 		values(#{file.fi_name}, #{file.fi_ori_name}, #{file.fi_bo_num})
 	</insert>
-	<select id = "selectFileList" resultType="kr.kh.study.vo.FileVO">
-		select * from file where fi_bo_Num = #{bo_num}
+	<select id="selectFileList" resultType="kr.kh.study.vo.FileVO">
+		select * from file where fi_bo_num = #{bo_num}
 	</select>
-	<delete id = "deleteFile">
+	<delete id="deleteFile">
 		delete from file where fi_num = #{fi_num}
 	</delete>
 	<select id="selectFile" resultType="kr.kh.study.vo.FileVO">
 		select * from file where fi_num = #{fi_num}
 	</select>
+	<select id="selectBoardTotalCount" resultType="int">
+		select count(*) from board
+	</select>
 </mapper>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

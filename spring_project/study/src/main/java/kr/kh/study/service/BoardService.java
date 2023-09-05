@@ -4,13 +4,14 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.kh.study.pagination.Criteria;
 import kr.kh.study.vo.BoardVO;
 import kr.kh.study.vo.FileVO;
 import kr.kh.study.vo.MemberVO;
 
 public interface BoardService {
 
-	List<BoardVO> getBoardList();
+	List<BoardVO> getBoardList(Criteria cri);
 
 	BoardVO getBoard(Integer bo_num);
 
@@ -24,6 +25,6 @@ public interface BoardService {
 
 	List<FileVO> getFileList(Integer bo_num);
 
-	
+	int getBoardTotalCount();
 
 }
