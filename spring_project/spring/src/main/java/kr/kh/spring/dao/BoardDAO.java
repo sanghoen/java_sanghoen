@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import kr.kh.spring.pagination.Criteria;
 import kr.kh.spring.vo.BoardVO;
 import kr.kh.spring.vo.FileVO;
+import kr.kh.spring.vo.LikeVO;
 
 public interface BoardDAO {
 
@@ -29,5 +30,13 @@ public interface BoardDAO {
 	void deleteFile(@Param("fi_num")Integer num);
 
 	void deleteBoard(@Param("bo_num")Integer bo_num);
+
+	LikeVO selectLike(@Param("li_bo_num")int li_bo_num, @Param("li_me_id")String li_me_id);//매개변수가 두개 이상일 때는 param을 반드시 붙여줘야 함
+
+	void insertLike(@Param("like")LikeVO likeVo);
+
+	void updateLike(@Param("like")LikeVO likeVo);
+
+	void updateBoardLike(@Param("bo_num")int li_bo_num);
 
 }
