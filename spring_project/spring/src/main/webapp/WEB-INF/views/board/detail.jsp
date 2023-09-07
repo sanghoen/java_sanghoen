@@ -68,7 +68,7 @@
 		</div>
 		<!-- 댓글 목록창 -->
 		<div class="comment-list">
-			<div class="border rounded-sm border-danger p-3 mt-3">
+			<div class="border rounded-sm border-danger p-3 mt-3 comment-box">
 				<div class="">작성자아이디</div>
 				<div class="input-group mb-3">
 				    <div class="col-9">
@@ -184,14 +184,41 @@
 				}
 				cri.page = 1;
 				getCommentList(cri);
+			})
+		});
+		
+		
+		$(document).on('click', '.btn-comment-update', function(){
+			revertBox();
+			let commentBox = $(this).parents('.comment-box')
+			changeBox(commentBox);
+		});
+		
+		$(document).on('click', '.btn-update-complete', function(){
+			let co_num = $(this).parents('.comment-box').find('[name=co_num]').val();
+			let co_contents = $(this).parents('.comment-box').find('[name=co_contents]').val();
+			
+			if(co_contents == ''){
+				alert('내용을 입력하세요.');
+				return;
+			}
+			
+			let comment = {
+					co_num : co_num,
+					co_me_id : '${user.me_id}',
+					co_contents : co_contents
+			}
+			
+			ajaxJsonToJson(false,'post','/comment/update', comment ,(data)=>{
+				if(data.res){
+					alert('댓글을 수정했습니다.')
+				}else{
+					alert('댓글을 수정하지 못했습니다.')
+				}
+				getCommentList(cri);
 			});
 		});
 		
-		/*
-		$(document).on('click', '.btn-comment-delete', function(){
-			alert('삭제버튼입니다.');
-		});
-		*/
 		
 		//전역변수 cri
 		let cri = {
@@ -200,6 +227,23 @@
 		}
 		//게시글이 화면에 출력되고 이어서 댓글이 화면에 출력되어야 하기 때문에 이벤트 등록없이 바로 호출
 		getCommentList(cri);
+		
+		
+		
+		function revertBox(){
+			$('[name=co_contents]').remove();
+			$('.btn-update-complete').remove();
+			$('.contents-box').show();
+			$('.btn-group').show();
+		}
+		function changeBox(commentBox){
+			let $contentsBox = commentBox.find('.contents-box');
+			let contents = $contentsBox.text().trim();
+			$contentsBox.hide().after('<textarea class="form-control col-9" name="co_contents">'+contents+'</textarea>');
+			let $btnGroup = commentBox.find('.btn-group');
+			$btnGroup.hide().after('<button class="btn btn-outline-success btn-update-complete">수정완료</button>');
+		}
+		
 		//현재 페이지 정보가 주어지면 현재 페이지에 맞는 댓글 리스트를 가져와서 화면에 출력하는 함수
 								//매개변수 cri
 		function getCommentList(cri){
@@ -240,15 +284,18 @@
 				let btnStr = '';
 				if('${user.me_id}' == comment.co_me_id){
 					btnStr = `
+					<div class="btn-group">
 						<button class="btn btn-outline-warning btn-comment-update" data-num="\${comment.co_num}">수정</button>
 						<button class="btn btn-outline-danger btn-comment-delete" onclick="deleteComment(\${comment.co_num})">삭제</button>
+					</div>
 					`;
 				}
 				str += `
-					<div class="border rounded-sm border-danger p-3 mt-3">
+					<div class="border rounded-sm border-danger p-3 mt-3 comment-box">
+						<input type="hidden" name="co_num" value="\${comment.co_num}">
 						<div class="">\${comment.co_me_id}</div>
 						<div class="input-group mb-3">
-						    <div class="col-9">
+						    <div class="col-9 contents-box">
 						    	\${comment.co_contents}
 						    </div>
 						    <div class="col-3">
@@ -266,7 +313,8 @@
 		function deleteComment(co_num){
 			let comment = {
 					co_num : co_num,
-					co_me_id : '${user.me_id}'
+					co_me_id : '${user.me_id}',
+					co_bo_num : '${board.bo_num}'
 			}
 			
 			ajaxJsonToJson(false,'post','/comment/delete', comment,(data)=>{
