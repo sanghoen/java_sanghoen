@@ -1,4 +1,4 @@
-package sample.board.comtroller;
+package semiproject.board.controller;
 
 import java.util.Scanner;
 
