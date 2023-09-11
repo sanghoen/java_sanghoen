@@ -3,6 +3,8 @@ package semiproject.board.controller;
 import java.util.Scanner;
 
 public class Main {
+	
+	private static EPController epController = new EPController();
 
 	public static void main(String[] args) {
 		int menu;
@@ -21,13 +23,13 @@ public class Main {
 	private static void runMenu(int menu) {
 		switch(menu) {
 		case 1:
-			employeeBoard();
+			epController.run();
 			break;
 		case 2:
-			projectBoard();
+			projectController();
 			break;
 		case 3:
-			attendanceBoard();
+			attendanceController();
 			break;
 		case 4:
 			System.out.println("[뒤로가기]");
@@ -38,15 +40,11 @@ public class Main {
 	}
 
 
-	private static void attendanceBoard() {
+	private static void attendanceController() {
 		
 	}
 
-	private static void projectBoard() {
-		
-	}
-
-	private static void employeeBoard() {
+	private static void projectController() {
 		
 	}
 
