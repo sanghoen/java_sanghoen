@@ -16,14 +16,14 @@ public class Criteria {
 		this.page = page;
 		this.perPageNum = perPageNum;
 	}
-	//게시글 리스트에서 현재 페이지에 맞는 게시글을 가져오기 위한 시작 번지
+	//게시글 리스트에서 현재 페이지에 맞는 게시글을 가져오기 위한 시작 번지 
 	public int getPageStart() {
-		return (page -1) * perPageNum;
+		return (page - 1) * perPageNum;
 	}
-	public String getUrl(int page) {	//밖에서 알려준 페이지
-		return "?page=" + page; //겟방식에서 return "?변수명=값&변수명=값";
+	public String getUrl(int page) {
+		return "?page=" + page;
 	}
-	public String getCurrentUrl() {		//현재페이지
+	public String getCurrentUrl() {
 		return "?page=" + page;
 	}
 }

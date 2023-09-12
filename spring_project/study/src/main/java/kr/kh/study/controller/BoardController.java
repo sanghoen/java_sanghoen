@@ -104,3 +104,7 @@ public class BoardController {
 		return "/util/message";
 	}
 }
+
+
+
+
