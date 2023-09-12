@@ -6,6 +6,7 @@ import semiproject.board.vo.EPVO;
 
 public interface EPDAO {
 
-	List<EPVO> selectBoardList();
+	List<EPVO> selectEPList();
+
 
 }

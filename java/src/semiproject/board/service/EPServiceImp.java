@@ -9,8 +9,14 @@ public class EPServiceImp implements EPService{
 
 	private EPDAO epDao;
 	
+	public EPServiceImp() {
+		this.epDao = epDao;
+	}
+	
+	private final String MYBATIS_CONFIG_PATH = "semiproject/board/config/mybatis-config.xml";
+	
 	@Override
 	public List<EPVO> getEPList() {
-		return epDao.selectBoardList();
+		return epDao.selectEPList();
 	}
 }

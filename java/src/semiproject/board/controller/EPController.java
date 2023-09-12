@@ -3,12 +3,14 @@ package semiproject.board.controller;
 import java.util.List;
 import java.util.Scanner;
 
-import db.day3.board.vo.BoardVO;
 import semiproject.board.service.EPService;
+import semiproject.board.service.EPServiceImp;
 import semiproject.board.vo.EPVO;
 
 public class EPController {
 
+	private EPService epService = new EPServiceImp();
+	
 	public void run() {
 		int menu;
 		final int EXIT = 5;
@@ -46,10 +48,10 @@ public class EPController {
 	}
 
 	private void Inquiry() {
-		List<EPVO> epList = EPService.getEPList();
+		List<EPVO> epList = epService.getEPList();
 		for(EPVO tmp : epList) {
 			System.out.println(tmp);
-				}
+		}	
 	}
 	private void Resignation() {
 		
