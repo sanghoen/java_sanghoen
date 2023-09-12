@@ -6,10 +6,11 @@ import db.day3.board.service.MemberService;
 import db.day3.board.service.MemberServiceImp;
 import db.day3.board.vo.MemberVO;
 
+
 public class MemberController {
 
 	private MemberService memberService = new MemberServiceImp();
-	
+
 	public void run() {
 		int menu;
 		final int EXIT = 3;
@@ -19,6 +20,7 @@ public class MemberController {
 			menu = sc.nextInt();
 			runMenu(menu);
 		}while(menu != EXIT);
+		
 	}
 
 	private void runMenu(int menu) {
@@ -35,14 +37,16 @@ public class MemberController {
 		default:
 			System.out.println("[잘못된 메뉴 입력]");
 		}
+		
 	}
 
 	private void withdraw() {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("아이디 	: ");
+		System.out.print("아이디 		: ");
 		String id = sc.next();
-		System.out.print("비번 	: ");
+		System.out.print("비번    	: ");
 		String pw = sc.next();
+		
 		MemberVO member = new MemberVO(id, pw);
 		if(memberService.withdraw(member)) {
 			System.out.println("[회원 탈퇴 성공]");
@@ -53,14 +57,13 @@ public class MemberController {
 
 	private void signup() {
 		Scanner sc = new Scanner(System.in);
-		System.out.print("아이디 	: ");
+		System.out.print("아이디 		: ");
 		String id = sc.next();
-		System.out.print("비번 	: ");
+		System.out.print("비번    	: ");
 		String pw = sc.next();
-		System.out.print("비번확인	: ");
+		System.out.print("비번확인 	: ");
 		String pw2 = sc.next();
-		//비번과 비번확인이 일치하지 않으면 종료하는 코드
-		//문자열끼리 비교하는 equals
+		//비번과 비번확인이 일치하지 않으면 종료
 		if(!pw.equals(pw2)) {
 			System.out.println("[비번 불일치]");
 			return;
@@ -70,7 +73,7 @@ public class MemberController {
 			System.out.println("[회원 가입 성공]");
 		}else {
 			System.out.println("[회원 가입 실패]");
-		};
+		}
 		
 	}
 
@@ -83,4 +86,5 @@ public class MemberController {
 		System.out.print("메뉴 선택 : ");
 	}
 
+	
 }

@@ -23,7 +23,7 @@ public class BoardController {
 	}
 
 	private void runMenu(int menu) {
-		switch(menu) {
+		switch(menu){
 		case 1:
 			insertBoard();
 			break;
@@ -53,7 +53,7 @@ public class BoardController {
 	}
 
 	private void deleteBoard() {
-		//수정할 게시글 정보(게시글 번호, 제목) 입력
+		//삭제할 게시글 정보(게시글 번호, 작성자) 입력
 		Scanner sc = new Scanner(System.in);
 		System.out.print("삭제할 게시글 번호 : ");
 		int num = sc.nextInt();
@@ -65,10 +65,9 @@ public class BoardController {
 			System.out.println("[게시글 삭제 성공]");
 		}else {
 			System.out.println("[게시글 삭제 실패]");
-		};
+		}
 		
 	}
-	
 
 	private void updateBoard() {
 		//수정할 게시글 정보(게시글 번호, 제목) 입력
@@ -84,7 +83,7 @@ public class BoardController {
 			System.out.println("[게시글 수정 성공]");
 		}else {
 			System.out.println("[게시글 수정 실패]");
-		};
+		}
 		
 	}
 
@@ -93,15 +92,16 @@ public class BoardController {
 		Scanner sc = new Scanner(System.in);
 		System.out.print("제목 : ");
 		String title = sc.nextLine();
-		System.out.print("아이디 : ");
-		String id = sc.next(); //공백이 없어야 해서
+		System.out.print("아이디: ");
+		String id = sc.next();
 		
 		BoardVO board = new BoardVO(title, id);
+		
 		if(boardService.insertBoard(board)) {
 			System.out.println("[게시글 등록 성공]");
 		}else {
 			System.out.println("[게시글 등록 실패]");
-		}		
+		}
 	}
 
 	private void printMenu() {
@@ -114,15 +114,5 @@ public class BoardController {
 		System.out.println("=================");
 		System.out.print("메뉴 선택 : ");
 	}
-	
+
 }
-
-
-
-
-
-
-
-
-
-

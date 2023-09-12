@@ -8,5 +8,6 @@ public interface MemberService {
 
 	boolean withdraw(MemberVO member);
 
+	
 
 }

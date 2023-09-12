@@ -9,7 +9,7 @@ import semiproject.board.vo.EPVO;
 
 public class EPController {
 
-	private EPService epService = new EPServiceImp();
+	private EPService epService;
 	
 	public void run() {
 		int menu;
@@ -51,7 +51,8 @@ public class EPController {
 		List<EPVO> epList = epService.getEPList();
 		for(EPVO tmp : epList) {
 			System.out.println(tmp);
-		}	
+		}
+		
 	}
 	private void Resignation() {
 		

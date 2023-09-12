@@ -8,7 +8,6 @@ public class BoardVO {
 	private String bo_title;
 	private String bo_me_id;
 	
-	//소스 - 컨스트럭터 유징 필드
 	public BoardVO(String bo_title, String bo_me_id) {
 		this.bo_title = bo_title;
 		this.bo_me_id = bo_me_id;
