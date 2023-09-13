@@ -61,6 +61,7 @@ public class BoardController {
 		String id = sc.next();
 		
 		BoardVO board = new BoardVO(num, null, id);
+		
 		if(boardService.deleteBoard(board)) {
 			System.out.println("[게시글 삭제 성공]");
 		}else {

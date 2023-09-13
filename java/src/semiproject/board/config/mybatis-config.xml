@@ -8,14 +8,13 @@
       <transactionManager type="JDBC"/>
       <dataSource type="POOLED">
         <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
-        <property name="url" value="jdbc:mysql://localhost:3306/test"/>
+        <property name="url" value="jdbc:mysql://localhost:3306/pmproject"/>
         <property name="username" value="root"/>
         <property name="password" value="root"/>
       </dataSource>
     </environment>
   </environments>
   <mappers>
-    <mapper resource="semiproject/board/dao/MemberMapper.xml"/>
-    <mapper resource="semiproject/board/dao/boardMapper.xml"/>
+    <mapper resource="semiproject/board/dao/EPMapper.xml"/>
   </mappers>
 </configuration>

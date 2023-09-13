@@ -8,4 +8,8 @@ public interface EPService {
 
 	List<EPVO> getEPList();
 
+	boolean deleteEP(EPVO ep);
+
+	boolean updateEP(EPVO ep);
+	
 }
