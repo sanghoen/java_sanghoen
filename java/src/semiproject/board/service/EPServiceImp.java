@@ -63,23 +63,20 @@ public class EPServiceImp implements EPService{
 			return false;
 		}
 		
-		//직원 번호를 이용하여 게시글을 가져옴
 		EPVO dbEp = epDao.selectEP(ep.getEp_id());
-		//직원 번호가 없으면 종료 
+	
 		if(dbEp == null) {
 			return false;
 		}
-		//있으면 가져온 게시글을 수정
+
 		dbEp.setEp_name(ep.getEp_name());
 		dbEp.setEp_email(ep.getEp_email());
 		dbEp.setEp_phone_num(ep.getEp_phone_num());
-		dbEp.setDm_name(ep.getDm_name());
-		dbEp.setPo_name(ep.getPo_name());
-		dbEp.setSt_type(ep.getSt_type());
+		dbEp.setEp_dm_num(ep.getEp_dm_num());
+		dbEp.setEp_po_num(ep.getEp_po_num());
+		dbEp.setEp_st_num(ep.getEp_st_num());
 		dbEp.setEp_leave(ep.getEp_leave());
 		dbEp.setEp_salay(ep.getEp_salay());
-		//다오에게 게시글을 수정하라고 시킴 
-		System.out.println("수정완료");
 		
 		if(epDao.updateEP(dbEp) != 0) {
 			return true;

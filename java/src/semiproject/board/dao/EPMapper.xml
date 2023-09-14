@@ -33,15 +33,15 @@
  	<update id="updateEP">
   	update employee
   		set
-	    ep_name = #{employee.ep_name},
-	    ep_email = #{employee.ep_email},
-	    ep_phone_num = #{employee.ep_phone_num},
-	    ep_dm_num = #{employee.ep_dm_num},
-	    ep_po_num = #{employee.ep_po_num},
-	    ep_st_nun = #{employee.ep_st_nun},
-	    ep_leave = #{employee.ep_leave},
-	    ep_salay = #{employee.ep_salay}
-	  	where ep_id = #{ep_id}
+	    ep_name = #{dbEp.ep_name},
+	    ep_email = #{dbEp.ep_email},
+	    ep_phone_num = #{dbEp.ep_phone_num},
+	    ep_dm_num = #{dbEp.ep_dm_num},
+	    ep_po_num = #{dbEp.ep_po_num},
+	    ep_st_num = #{dbEp.ep_st_num},
+	    ep_leave = #{dbEp.ep_leave},
+	    ep_salay = #{dbEp.ep_salay}
+	  	where ep_id = #{dbEp.ep_id}
   	</update>
  	
 </mapper>

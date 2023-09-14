@@ -16,5 +16,6 @@
   </environments>
   <mappers>
     <mapper resource="semiproject/board/dao/EPMapper.xml"/>
+    <mapper resource="semiproject/board/dao/TimeoffMapper.xml"/>
   </mappers>
 </configuration>
