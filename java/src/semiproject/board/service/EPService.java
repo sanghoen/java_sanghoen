@@ -11,5 +11,8 @@ public interface EPService {
 	boolean deleteEP(EPVO ep);
 
 	boolean updateEP(EPVO ep);
-	
+
+	void insertNum(EPVO epST);
+
+
 }

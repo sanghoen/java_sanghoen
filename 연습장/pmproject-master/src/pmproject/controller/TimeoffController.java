@@ -1,4 +1,4 @@
-package semiproject.board.controller;
+package pmproject.controller;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -6,17 +6,13 @@ import java.util.Date;
 import java.util.List;
 import java.util.Scanner;
 
-import semiproject.board.service.EPService;
-import semiproject.board.service.EPServiceImp;
-import semiproject.board.service.TimeoffService;
-import semiproject.board.service.TimeoffServiceImp;
-import semiproject.board.vo.EPVO;
-import semiproject.board.vo.TimeoffVO;
+import pmproject.service.TimeoffService;
+import pmproject.service.TimeoffServiceImp;
+import pmproject.vo.TimeoffVO;
 
 public class TimeoffController {
-
+	
 	private TimeoffService timeoffService = new TimeoffServiceImp();
-	private EPService epService = new EPServiceImp();
 	
 	public void timeoff() {
 		int menu2;
@@ -44,10 +40,10 @@ private void timeoff2(int menu) {
 		case 3:
 			TOInsert();
 		case 4:
-			System.out.println("[ë’¤ë¡œê°€ê¸°]");
+			System.out.println("[µÚ·Î°¡±â]");
 			break;
 		default:
-			System.out.println("[ì˜ëª»ëœ ë©”ë‰´ ì…ë ¥]");
+			System.out.println("[Àß¸øµÈ ¸Ş´º ÀÔ·Â]");
 		
 		}
 	}
@@ -56,35 +52,30 @@ private void timeoff2(int menu) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		Scanner sc = new Scanner(System.in);
 		
-		System.out.println("[í˜•ì‹ :YYYY-MM-DD]");
-		System.out.print("íœ´ê°€ ì‹œì‘ì¼ : ");
+		System.out.println("[Çü½Ä :YYYY-MM-DD]");
+		System.out.print("Åğ»ç/ÈŞÁ÷ ³¯Â¥ : ");
 		String tm_datestr = sc.nextLine();
-		System.out.println("[í˜•ì‹ :YYYY-MM-DD]");
-		System.out.print("ë³µì§ì¼ : ");
+		System.out.println("[Çü½Ä :YYYY-MM-DD]");
+		System.out.println("[ÅğÁ÷ :0000-00-00]");
+		System.out.print("º¹Á÷ ³¯Â¥ : ");
 		String tm_return_datestr = sc.nextLine();
-		System.out.print("ì‚¬ìœ  : ");
+		System.out.print("»çÀ¯ : ");
 		String tm_reason = sc.nextLine();
-		System.out.print("ì§ì› id : ");
-		int tm_ep_id = sc.nextInt();
-		int ep_id = tm_ep_id;
+		System.out.print("Á÷¿ø id : ");
+		String tm_ep_id = sc.next();
+		
 		try {
 	        Date tm_date = dateFormat.parse(tm_datestr);
 	        Date tm_return_date = dateFormat.parse(tm_return_datestr); 
 
 	        TimeoffVO timeoff = new TimeoffVO(tm_date, tm_return_date, tm_reason, tm_ep_id);
-	       
-	        int ep_st_num = 2;
-	        EPVO epST = new EPVO(ep_id, ep_st_num);
-	        
 	        if (timeoffService.insertTimeoff(timeoff)) {
-	        	System.out.println("í™•ì¸4");
-	        	epService.insertNum(epST); 
-	            System.out.println("[ì§ì› íœ´ê°€ ë“±ë¡ ì„±ê³µ]");
+	            System.out.println("[Á÷¿ø Á¤º¸ ¼öÁ¤ ¼º°ø]");
 	        } else {
-	            System.out.println("[ì§ì› íœ´ê°€ ë“±ë¡ ì‹¤íŒ¨]");
+	            System.out.println("[Á÷¿ø Á¤º¸ ¼öÁ¤ ½ÇÆĞ]");
 	        }
 	    } catch (ParseException e) {
-	        System.out.println("ë‚ ì§œ í˜•ì‹ì´ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+	        System.out.println("³¯Â¥ Çü½ÄÀÌ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.");
 	    }
 		
 }
@@ -101,20 +92,20 @@ private void timeoff2(int menu) {
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
 		Scanner sc = new Scanner(System.in);
-		System.out.print("í‡´ì‚¬/íœ´ì§ ë²ˆí˜¸ : ");
+		System.out.print("Åğ»ç/ÈŞÁ÷ ¹øÈ£ : ");
 		int tm_num = sc.nextInt();
 		sc.nextLine();
-		System.out.println("[í˜•ì‹ :YYYY-MM-DD]");
-		System.out.print("í‡´ì‚¬/íœ´ì§ ë‚ ì§œ : ");
+		System.out.println("[Çü½Ä :YYYY-MM-DD]");
+		System.out.print("Åğ»ç/ÈŞÁ÷ ³¯Â¥ : ");
 		String tm_datestr = sc.nextLine();
-		System.out.println("[í˜•ì‹ :YYYY-MM-DD]");
-		System.out.println("[í‡´ì§ :0000-00-00]");
-		System.out.print("ë³µì§ ë‚ ì§œ : ");
+		System.out.println("[Çü½Ä :YYYY-MM-DD]");
+		System.out.println("[ÅğÁ÷ :0000-00-00]");
+		System.out.print("º¹Á÷ ³¯Â¥ : ");
 		String tm_return_datestr = sc.nextLine();
-		System.out.print("ì‚¬ìœ  : ");
+		System.out.print("»çÀ¯ : ");
 		String tm_reason = sc.nextLine();
-		System.out.print("ì§ì› id : ");
-		int tm_ep_id = sc.nextInt();
+		System.out.print("Á÷¿ø id : ");
+		String tm_ep_id = sc.next();
 		
 		
 		try {
@@ -122,27 +113,24 @@ private void timeoff2(int menu) {
 	        Date tm_return_date = dateFormat.parse(tm_return_datestr); 
 
 	        TimeoffVO timeoff = new TimeoffVO(tm_num, tm_date, tm_return_date, tm_reason, tm_ep_id);
-
-	        
 	        if (timeoffService.updateTimeoff(timeoff)) {
-	        	
-	            System.out.println("[ì§ì› ì •ë³´ ìˆ˜ì • ì„±ê³µ]");
+	            System.out.println("[Á÷¿ø Á¤º¸ ¼öÁ¤ ¼º°ø]");
 	        } else {
-	            System.out.println("[ì§ì› ì •ë³´ ìˆ˜ì • ì‹¤íŒ¨]");
+	            System.out.println("[Á÷¿ø Á¤º¸ ¼öÁ¤ ½ÇÆĞ]");
 	        }
 	    } catch (ParseException e) {
-	        System.out.println("ë‚ ì§œ í˜•ì‹ì´ ì˜¬ë°”ë¥´ì§€ ì•ŠìŠµë‹ˆë‹¤.");
+	        System.out.println("³¯Â¥ Çü½ÄÀÌ ¿Ã¹Ù¸£Áö ¾Ê½À´Ï´Ù.");
 	    }
 	
 	}
 	
 	private static void TOPrintMenu() {
-		System.out.println("=====ê²Œì‹œíŒë©”ë‰´=====");
-		System.out.println("1. íœ´ê°€ì/í‡´ì‚¬ì ì •ë³´ ì¡°íšŒ");
-		System.out.println("2. íœ´ê°€ì/í‡´ì‚¬ì ì •ë³´ ìˆ˜ì •");
-		System.out.println("3. ì§ì› íœ´ê°€ ë“±ë¡");
-		System.out.println("4. ë’¤ë¡œê°€ê¸°");
+		System.out.println("=====°Ô½ÃÆÇ¸Ş´º=====");
+		System.out.println("1. ÈŞ°¡ÀÚ/Åğ»çÀÚ Á¤º¸ Á¶È¸");
+		System.out.println("2. ÈŞ°¡ÀÚ/Åğ»çÀÚ Á¤º¸ ¼öÁ¤");
+		System.out.println("3. ÈŞ°¡ÀÚ/Åğ»çÀÚ Á¤º¸ Ãß°¡");
+		System.out.println("4. µÚ·Î°¡±â");
 		System.out.println("=================");
-		System.out.print("ë©”ë‰´ ì„ íƒ : ");
+		System.out.print("¸Ş´º ¼±ÅÃ : ");
 	}
 }

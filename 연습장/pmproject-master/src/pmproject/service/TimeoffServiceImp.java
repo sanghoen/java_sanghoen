@@ -1,4 +1,4 @@
-package semiproject.board.service;
+package pmproject.service;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,15 +9,14 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
-
-import semiproject.board.dao.TimeoffDAO;
-import semiproject.board.vo.TimeoffVO;
+import pmproject.dao.TimeoffDAO;
+import pmproject.vo.TimeoffVO;
 
 public class TimeoffServiceImp implements TimeoffService{
 	
 	private TimeoffDAO timeoffDao;
 	
-	private final String MYBATIS_CONFIG_PATH = "semiproject/board/config/mybatis-config.xml";
+	private final String MYBATIS_CONFIG_PATH = "pmproject/config/mybatis-config.xml";
 	
 	public TimeoffServiceImp() {
 		try {
@@ -59,22 +58,21 @@ public class TimeoffServiceImp implements TimeoffService{
 		return false;
 	}
 
-
 	@Override
 	public boolean insertTimeoff(TimeoffVO timeoff) {
 		if(timeoff == null) {
 			return false;
 		}
-		System.out.println("ÌôïÏù∏1");
-		TimeoffVO timeOffID = timeoffDao.selectTimeoff(timeoff.getTm_ep_id());
-		if(timeOffID != null) {
+		System.out.println("»Æ¿Œ1");
+		TimeoffVO timeOffID = timeoffDao.selectTimeoff(timeoff.getTm_num());
+		if(timeOffID == null) {
 			return false;
 		} 
-		System.out.println("ÌôïÏù∏2");
+		System.out.println("»Æ¿Œ2");
 		if(timeoffDao.insertTimeoff(timeoff) != 0) {
 			return true;
 		}
-		System.out.println("ÌôïÏù∏3");
+		System.out.println("»Æ¿Œ3");
 		return false;
 	}	
 }

@@ -1,5 +1,6 @@
 package semiproject.board.vo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import lombok.Data;
@@ -36,6 +37,14 @@ public class TimeoffVO {
 		this.tm_return_date = tm_return_date;
 		this.tm_reason = tm_reason;
 		this.tm_ep_id = tm_ep_id;
+	}
+	
+	public String getTm_date_str() {
+		if(tm_date == null) {
+			return "";
+		}
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		return format.format(tm_date);
 	}
 
 }

@@ -16,7 +16,10 @@ public interface EPDAO {
 
 	int updateEP(@Param("dbEp")EPVO dbEp);
 
-	
+	void insertTm(@Param("ep_id") int ep_id, @Param("today") String today);
 
+	EPVO selectST(@Param("ep_id")int ep_id);
+
+	void insertST(@Param("epST")EPVO epST);
 
 }

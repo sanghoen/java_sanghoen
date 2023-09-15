@@ -50,6 +50,10 @@ public class EPVO {
 		this.ep_leave = ep_leave;
 		this.ep_salay = ep_salay;
 	}
+	public EPVO(int ep_id, int ep_st_num) {
+		this.ep_id = ep_id;
+		this.ep_st_num = ep_st_num;
+	}
 	
 	@Override
 	public String toString() {

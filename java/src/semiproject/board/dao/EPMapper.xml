@@ -27,9 +27,12 @@
 	<select id="selectEP" resultType="semiproject.board.vo.EPVO">
   		select * from employee where ep_id = #{ep_id}
  	 </select>
-	<delete id="deleteEP">
-  		delete from employee where ep_id = #{ep_id}
- 	</delete>
+	<update id="deleteEP">
+  		update employee SET 
+		    ep_st_num = 3
+		WHERE
+    		ep_id = #{ep_id};
+ 	</update>
  	<update id="updateEP">
   	update employee
   		set
@@ -43,5 +46,19 @@
 	    ep_salay = #{dbEp.ep_salay}
 	  	where ep_id = #{dbEp.ep_id}
   	</update>
- 	
+  	<insert id="insertTm">
+  		insert into termination(tm_date, tm_reason, tm_ep_id) values(#{today}, #{"퇴사"}, #{ep_id})
+  	</insert>
+ 	<select id="selectST">
+ 		select * from employee where ep_id = #{ep_id}
+ 	</select>
+ 	<update id="insertST">
+ 		update employee set 
+ 			ep_st_num = 2
+ 		where
+ 			ep_id = #{epST.ep_id}
+ 	</update>
 </mapper>
+
+
+

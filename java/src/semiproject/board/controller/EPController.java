@@ -58,15 +58,14 @@ public class EPController {
 		
 		EPVO ep = new EPVO(id, name, null, null, 0, 0, 0, 0, 0);
 		if(epService.deleteEP(ep)) {
-			System.out.println("[직원 정보 삭제 성공]");
+			System.out.println("[직원 정보 수정 성공]");
 		}else {
-			System.out.println("[직원 정보 삭제 실패]");
+			System.out.println("[직원 정보 수정 실패]");
 		}
 		
 	}
 
 	private void Modify() {
-		//수정할 게시글 정보(게시글 번호, 제목) 입력
 		Scanner sc = new Scanner(System.in);
 		System.out.print("수정할 직원의 번호 : ");
 		int ep_id = sc.nextInt();
@@ -109,7 +108,7 @@ public class EPController {
 		EPVO ep = new EPVO(ep_id, ep_name, ep_email, ep_phone_num, ep_dm_num, ep_po_num, ep_st_num, ep_leave, ep_salay);
 		
 		if(epService.updateEP(ep)) {
-			System.out.println("[직원 정보 수정 성공]");
+			System.out.println("[퇴사자 등록 성공]");
 		}else {
 			System.out.println("[직원 정보 수정 실패]");
 		}
@@ -125,7 +124,7 @@ public class EPController {
 		System.out.println("=====게시판메뉴=====");
 		System.out.println("1. 직원 정보 조회");
 		System.out.println("2. 직원 퇴사 관리");
-		System.out.println("3. 휴가자/퇴사자 관리");
+		System.out.println("3. 직원 휴가 관리");
 		System.out.println("4. 반려/수정");
 		System.out.println("5. 뒤로가기");
 		System.out.println("=================");
