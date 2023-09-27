@@ -1,5 +1,6 @@
 package pmproject.vo;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import lombok.AllArgsConstructor;
@@ -17,15 +18,23 @@ public class TimeoffVO {
 
 	@Override
 	public String toString() {
-		return     "Åð»ç ¹øÈ£"+ ": " +tm_num +"\n"
-				 + "Åð»ç ³¯Â¥ "+ ": " + tm_date +"\n"
-		         + "»çÀ¯ "+ ": " +tm_reason +"\n"
-		         + "»ç¹ø "+ ": " +tm_ep_id +"\n";
+		return     "í‡´ì‚¬ ë²ˆí˜¸"+ ": " +tm_num +"\n"
+				 + "í‡´ì‚¬ ë‚ ì§œ "+ ": " + getTm_date_str() +"\n"
+		         + "ì‚¬ìœ  "+ ": " +tm_reason +"\n"
+		         + "ì‚¬ë²ˆ "+ ": " +tm_ep_id +"\n";
 	}
 
 	public TimeoffVO(Date tm_date, String tm_reason, String tm_ep_id) {
 		this.tm_date = tm_date;
 		this.tm_reason = tm_reason;
 		this.tm_ep_id = tm_ep_id;
+	}
+	
+	public String getTm_date_str() {
+		if(tm_date == null) {
+			return "";
+		}
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		return format.format(tm_date);
 	}
 }
