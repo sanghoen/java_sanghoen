@@ -23,13 +23,13 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
-		
-	<!-- 타일즈 설정. 타일즈 뷰 리졸버를 등록 -->	
+	
+	<!-- 타일즈 설정. 타일즈 뷰 리졸버를 등록 -->
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
 	    <beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
 	    <beans:property name="order" value="1" /><!-- 순서를 우선으로 지정 -->
 	</beans:bean>
-	<!-- 타일즈 설정 파일을 등록 -->    
+    <!-- 타이블 설정 파일을 등록 -->
 	<beans:bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 	    <beans:property name="definitions">
 	        <beans:list>
@@ -37,7 +37,6 @@
 	        </beans:list>
 	    </beans:property>
 	</beans:bean>
-	
 	
 	<context:component-scan base-package="kr.kh.spring.*" />
 	
@@ -59,7 +58,7 @@
 		</interceptor>
 		<interceptor>
 			<mapping path="/member/login"/>
-			<mapping path="/member/signup]"/>
+			<mapping path="/member/signup"/>
 			<beans:ref bean="guestInterceptor" />
 		</interceptor>
 		<interceptor>
@@ -71,9 +70,14 @@
 	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<beans:property name="maxUploadSize" value="10485760"/>
 	</beans:bean>
+	<beans:bean id="uploadPath" class="java.lang.String">
+	    <beans:constructor-arg value="D://uploadfiles"/>
+	    <!-- <beans:constructor-arg value="D://uploadfiles"/> -->
+	</beans:bean>
+	<beans:bean id="uploadImgPath" class="java.lang.String">
+	    <beans:constructor-arg value="D://img"/>
+	</beans:bean>
 </beans:beans>
-
-
 
 
 

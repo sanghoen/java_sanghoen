@@ -28,21 +28,19 @@ public class CommentServiceImp implements CommentService {
 			return false;
 		}
 		boardDao.updateBoardComment(comment.getCo_bo_num());
-		
-		return true;
+		return true; 
 	}
 
 	@Override
 	public List<CommentVO> getCommentList(Criteria cri, int bo_num) {
 		if(cri == null) {
-			cri = new Criteria();
+			cri = new Criteria(); 
 		}
 		return commentDao.selectCommentList(cri, bo_num);
 	}
 
 	@Override
 	public int getTotalCount(int bo_num) {
-		
 		return commentDao.selectCommentCount(bo_num);
 	}
 
@@ -64,16 +62,7 @@ public class CommentServiceImp implements CommentService {
 		if(comment == null || comment.getCo_contents() == null || comment.getCo_me_id() == null) {
 			return false;
 		}
-		return commentDao.updateComment(comment);
-	
+		return commentDao.updateComment(comment); 
 	}
+
 }
-
-
-
-
-
-
-
-
-

@@ -31,9 +31,9 @@ public class CommentController {
 	@PostMapping("/comment/list/{bo_num}")
 	public Map<String, Object> list(@RequestBody Criteria cri, @PathVariable("bo_num")int bo_num){
 		Map<String, Object> map = new HashMap<String, Object>();
-		List<CommentVO> list = commentService.getCommentList(cri, bo_num);	
+		List<CommentVO> list = commentService.getCommentList(cri, bo_num);
 		int totalCount = commentService.getTotalCount(bo_num);
-		PageMaker pm = new PageMaker(3, cri , totalCount);
+		PageMaker pm = new PageMaker(3, cri, totalCount);
 		map.put("list", list);
 		map.put("pm", pm);
 		return map;
@@ -53,6 +53,3 @@ public class CommentController {
 		return map;
 	}
 }
-
-
-

@@ -2,7 +2,11 @@ package kr.kh.spring.service;
 
 import java.util.regex.Pattern;
 
+import javax.mail.internet.MimeMessage;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +22,9 @@ public class MemberServiceImp implements MemberService {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
+	@Autowired
+	private JavaMailSender mailSender;
+	
 	@Override
 	public boolean signup(MemberVO member) {
 		if(member == null) {
@@ -30,11 +37,10 @@ public class MemberServiceImp implements MemberService {
 		if(dbMember != null) {
 			return false;
 		}
-		
-		//비번, 이메일 null 체크 = + 유효성 검사.
+		//아이디, 비번 null 체크 + 유효성 검사
 		//아이디는 영문으로 시작하고, 6~15자
-		String idRegex = "^[a-zA-z][a-zA-Z0-9]{5,14}$";
-		//비번은 영문,숫자,!@#$%로 이루어지고 6~15자
+		String idRegex = "^[a-zA-Z][a-zA-Z0-9]{5,14}$";
+		//비번은 영문,숫자,!@#$%로 이루어지고 6~15자 
 		String pwRegex = "^[a-zA-Z0-9!@#$%]{6,15}$";
 		
 		//아이디가 유효성에 맞지 않으면
@@ -45,9 +51,10 @@ public class MemberServiceImp implements MemberService {
 		if(!Pattern.matches(pwRegex, member.getMe_pw())) {
 			return false;
 		}
-		//비번 암호화
-		String encPW = passwordEncoder.encode(member.getMe_pw());
-		member.setMe_pw(encPW);
+		
+		//비번 암호화 
+		String encPw = passwordEncoder.encode(member.getMe_pw());
+		member.setMe_pw(encPw);
 		//회원가입
 		return memberDao.insertMember(member);
 	}
@@ -82,5 +89,31 @@ public class MemberServiceImp implements MemberService {
 	public MemberVO getMemberBySession(String session_id) {
 		return memberDao.selectMemberBySession(session_id);
 	}
+
+	@Override
+	public boolean sendMail(String to, String title, String contents) {
+		try {
+	        MimeMessage message = mailSender.createMimeMessage();
+	        MimeMessageHelper messageHelper 
+	            = new MimeMessageHelper(message, true, "UTF-8");
+
+	        messageHelper.setFrom("stajun@naver.com");  // 보내는사람 생략하거나 하면 정상작동을 안함
+	        messageHelper.setTo(to);     // 받는사람 이메일
+	        messageHelper.setSubject(title); // 메일제목은 생략이 가능하다
+	        messageHelper.setText(contents, true);  // 메일 내용
+
+	        mailSender.send(message);
+	        return true;
+	    } catch(Exception e){
+	        System.out.println(e);
+	    }
+		return false;
+	}
+
+	@Override
+	public Object checkId(String id) {
+		return memberDao.selectMember(id) == null;
+	}
+
 	
 }

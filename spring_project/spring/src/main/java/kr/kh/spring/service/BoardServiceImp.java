@@ -3,6 +3,8 @@ package kr.kh.spring.service;
 import java.io.IOException;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +24,8 @@ public class BoardServiceImp implements BoardService{
 	@Autowired
 	BoardDAO boardDao;
 	
-	String uploadPath = "D:\\uploadfiles";
+	@Resource
+	String uploadPath;
 
 	@Override
 	public boolean insertBoard(BoardVO board, MemberVO user, MultipartFile[] files) {
@@ -260,15 +263,21 @@ public class BoardServiceImp implements BoardService{
 		if(boardType == null || boardType.getBt_title() == null) {
 			return false;
 		}
-	
 		try {
-		return boardDao.updateBoardType(boardType);
+			return boardDao.updateBoardType(boardType);
 		}catch(Exception e) {
 			return false;
 		}
 	}
-}
 
+	@Override
+	public List<BoardTypeVO> getBoardTypeList(MemberVO user) {
+		if(user == null || user.getMe_role() == null) {
+			return null;
+		}
+		return boardDao.selectBoardTypeListByRole(user.getMe_role());
+	}
+}
 
 
 

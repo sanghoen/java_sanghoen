@@ -1,0 +1,17 @@
+body {
+  margin: 0;
+ 
+}
+
+.menu-list{
+  list-style: none;
+  margin: 0; padding: 10px 0;
+  display: flex;
+  justify-content: space-around; /*컨텐츠 앞뒤로 공백 추가*/
+}
+.menu-link{
+  color: black;
+}
+.menu-link:hover{
+  background-color: aliceblue;
+}

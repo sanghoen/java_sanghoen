@@ -30,7 +30,7 @@
     <tbody>
     	<c:forEach items="${list}" var="bt">
 	      <tr>
-	        <td>${bt.bt_num} <input type="hidden" name=bt_num value="${bt.bt_num }"></td>
+	        <td>${bt.bt_num}<input type="hidden" name="bt_num" value="${bt.bt_num}"></td>
 	        <td><input type="text" value="${bt.bt_title}" class="form-control" name="bt_title"></td>
 	        <td>
 	        	<select class="form-control" name="type">
@@ -71,16 +71,14 @@
   			}
   		});
   	});
-
   	
   	$('.btn-update').click(function(){
   		let bt_title = $(this).parents('tr').find('[name=bt_title]').val();
-  	
+  		console.log(bt_title)
   		if(bt_title.trim().length == 0){
   			alert('게시판명을 입력하세요.');
   			return;
   		}
-  		
   		let bt_num = $(this).parents('tr').find('[name=bt_num]').val();
   		
   		let bt = {
@@ -114,15 +112,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-

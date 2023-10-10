@@ -4,7 +4,7 @@
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
   <typeAliases>
-  	<typeAlias type="kr.kh.spring.vo.MemeberVO" alias="MemberVO"/>
+  	<typeAlias type="kr.kh.spring.vo.MemberVO" alias="MemberVO"/>
   	<typeAlias type="kr.kh.spring.vo.BoardVO" alias="BoardVO"/>
   </typeAliases>
   

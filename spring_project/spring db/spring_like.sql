@@ -32,9 +32,9 @@ CREATE TABLE `like` (
   PRIMARY KEY (`li_num`),
   KEY `FK_member_TO_like_1` (`li_me_id`),
   KEY `FK_li_bo_num_idx` (`li_bo_num`),
-  CONSTRAINT `FK_li_bo_num` FOREIGN KEY (`li_bo_num`) REFERENCES `board` (`bo_num`),
+  CONSTRAINT `FK_li_bo_num` FOREIGN KEY (`li_bo_num`) REFERENCES `board` (`bo_num`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `FK_member_TO_like_1` FOREIGN KEY (`li_me_id`) REFERENCES `member` (`me_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -43,6 +43,7 @@ CREATE TABLE `like` (
 
 LOCK TABLES `like` WRITE;
 /*!40000 ALTER TABLE `like` DISABLE KEYS */;
+INSERT INTO `like` VALUES (1,-1,'qwe123',16);
 /*!40000 ALTER TABLE `like` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +56,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-28 16:45:28
+-- Dump completed on 2023-09-11 10:53:19

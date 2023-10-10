@@ -11,5 +11,4 @@ public class Message {
 	public String toString() {
 		return "{ " + "msg : '" + msg + "', url : '" + url + "' }";
 	}
-}	
-	
+}

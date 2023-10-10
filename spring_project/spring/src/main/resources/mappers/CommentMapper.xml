@@ -10,7 +10,7 @@
 	<select id="selectCommentList" resultType="kr.kh.spring.vo.CommentVO">
 		select * from comment 
 			where co_bo_num = #{bo_num}
-			order by co_num desc
+			order by co_num desc 
 			limit #{cri.pageStart}, #{cri.perPageNum}
 	</select>
 	<select id="selectCommentCount" resultType="int">
@@ -22,8 +22,13 @@
 	<update id="updateComment">
 		update comment 
 		set 
-			co_contents = #{comment.co_contents}
-		where
+			co_contents = #{comment.co_contents} 
+		where 
 			co_num = #{comment.co_num} and co_me_id = #{comment.co_me_id}
 	</update>
 </mapper>
+
+
+
+
+
