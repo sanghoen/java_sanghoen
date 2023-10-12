@@ -6,9 +6,7 @@ import Body from './Body.js';
 function App() {
   return (
     <div>
-      <Menu/>
-      <Body/>
-      <Footer/>
+     
     </div>
   );
 }

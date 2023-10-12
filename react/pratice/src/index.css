@@ -13,3 +13,15 @@ body {
 .menu-link:hover{
 	background-color: aliceblue;
 }
+.movie1{
+	font-size: 50px;
+	position: relative; 
+	text-Align: Center;
+}
+
+table{
+	margin-left:auto;margin-right:auto;
+	border-collapse: separate;
+   border-spacing: 10px 10px;
+	 text-align: center;
+}

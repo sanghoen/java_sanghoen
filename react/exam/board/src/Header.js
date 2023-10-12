@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 import {Link} from 'react-router-dom'
 
-function Header () {
+function Header(){
 	return(
 		<header className='menu'>
 			<ul className='menu-list'>
@@ -15,5 +15,5 @@ function Header () {
 		</header>
 	)
 }
-export default Header;
 
+export default Header;
