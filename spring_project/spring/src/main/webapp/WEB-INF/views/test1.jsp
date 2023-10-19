@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>
-	Test1입니다.  
+	Test1입니다.
 </h1>
 
 </body>
