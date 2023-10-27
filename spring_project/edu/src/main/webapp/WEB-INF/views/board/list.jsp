@@ -30,7 +30,7 @@
 				<th>조회수</th>
 			</tr>
 		</thead>
-		<tbody>
+		<tbody>							<!-- var==꺼냈을 때 이름 -->>
 			<c:forEach items="${list}" var="board" varStatus="vs">
 				<tr>
 					<td>${pm.totalCount - vs.index}</td>
